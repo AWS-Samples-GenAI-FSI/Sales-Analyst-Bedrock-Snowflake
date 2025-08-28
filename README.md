@@ -87,13 +87,7 @@ When a user interacts with the POC, the flow is as follows:
     pip install -r requirements.txt
     ```
 
-6. Copy the environment file and configure your credentials:
-
-    ```bash
-    cp .env.example .env
-    ```
-    
-    Open the `.env` file and replace the placeholders with your actual credentials:
+6. Configure your credentials by editing the `.env` file and replacing the dummy values with your actual credentials:
 
     ```bash
     # AWS Configuration (Required)
@@ -199,7 +193,7 @@ To enable, update your credentials in the connector file or set environment vari
     - Ensure sufficient compute resources
 
 - **"Credentials not found"**:
-    - Make sure you copied `.env.example` to `.env`: `cp .env.example .env`
+    - Make sure you updated the `.env` file with your actual credentials
     - Make sure `.env` file is in the same directory as `app.py`
     - Verify no extra spaces in your credential values
     - Check that you saved the `.env` file after editing
