@@ -4,6 +4,8 @@
 
 This is sample code demonstrating the use of Amazon Bedrock and Generative AI to create an intelligent sales data analyst that uses natural language questions to query relational data stores, specifically Snowflake. This example leverages the complete Northwind sample database with realistic sales scenarios containing customers, orders, and order details.
 
+![Sales Analyst Demo](images/demo.gif)
+
 ## Goal of this POC
 The goal of this repo is to provide users the ability to use Amazon Bedrock and generative AI to ask natural language questions about sales performance, customer behavior, and business metrics. These questions are automatically transformed into optimized SQL queries against a Snowflake database. This repo includes intelligent context retrieval using FAISS vector store, LangGraph workflow orchestration, and comprehensive monitoring capabilities.
 
@@ -87,34 +89,32 @@ When a user interacts with the POC, the flow is as follows:
     pip install -r requirements.txt
     ```
 
-6. Copy the environment file and configure your credentials:
+6. Configure your credentials in `src/utils/snowflake_connector.py`:
 
-    ```bash
-    cp .env.example .env
-    ```
-    
-    Open the `.env` file and replace the placeholders with your actual credentials:
-
-    ```bash
-    # AWS Configuration (Required)
-    AWS_REGION=us-east-1
-    AWS_ACCESS_KEY_ID=your_access_key_here
-    AWS_SECRET_ACCESS_KEY=your_secret_key_here
-
+    ```python
     # Snowflake Configuration (Required)
-    SNOWFLAKE_USER=your_username
-    SNOWFLAKE_PASSWORD=your_password
-    SNOWFLAKE_ACCOUNT=your_account_identifier
-    SNOWFLAKE_WAREHOUSE=your_warehouse
-    SNOWFLAKE_ROLE=your_role
+    user = "your_username"
+    password = "your_password"
+    account = "your_account_identifier"
+    warehouse = "your_warehouse"
+    role = "your_role"
     ```
 
-7. Start the application from your terminal:
+7. Configure AWS credentials for Bedrock access:
+    ```bash
+    aws configure
+    # OR set environment variables
+    export AWS_ACCESS_KEY_ID=your_key
+    export AWS_SECRET_ACCESS_KEY=your_secret
+    export AWS_REGION=us-east-1
+    ```
+
+8. Start the application from your terminal:
     ```bash
     streamlit run app.py
     ```
 
-8. **Automatic Setup**: On first run, the application will automatically:
+9. **Automatic Setup**: On first run, the application will automatically:
    - Connect to your Snowflake account
    - Check if Northwind sample database exists
    - Download Northwind sample data if needed
@@ -123,7 +123,7 @@ When a user interacts with the POC, the flow is as follows:
    - Build vector store with schema metadata
    - This process takes approximately 2-3 minutes
 
-9. **Start Analyzing**: Once setup is complete, you can ask natural language questions like:
+10. **Start Analyzing**: Once setup is complete, you can ask natural language questions like:
    - "What are the top 5 customers by order value?"
    - "Show me the schema of the CUSTOMERS table"
    - "Count the number of orders by country"
@@ -199,10 +199,9 @@ To enable, update your credentials in the connector file or set environment vari
     - Ensure sufficient compute resources
 
 - **"Credentials not found"**:
-    - Make sure you copied `.env.example` to `.env`: `cp .env.example .env`
-    - Make sure `.env` file is in the same directory as `app.py`
+    - Make sure you updated `src/utils/snowflake_connector.py`
     - Verify no extra spaces in your credential values
-    - Check that you saved the `.env` file after editing
+    - Check that you saved the file after editing
 
 - **"App won't start"**:
     - Ensure Python 3.11+ is installed: `python --version`
