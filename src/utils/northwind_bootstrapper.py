@@ -9,7 +9,11 @@ import sqlite3
 import streamlit as st
 import traceback
 import snowflake.connector
+from dotenv import load_dotenv
 from .snowflake_connector import get_snowflake_connection
+
+# Load environment variables (override existing ones)
+load_dotenv(override=True)
 
 DATABASE_NAME = "SALES_ANALYST"
 NORTHWIND_SCHEMA = "NORTHWIND"

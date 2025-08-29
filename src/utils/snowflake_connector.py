@@ -5,8 +5,8 @@ import os
 import snowflake.connector
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+# Load environment variables (override existing ones)
+load_dotenv(override=True)
 
 def get_snowflake_connection():
     """
