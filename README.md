@@ -12,6 +12,9 @@ The goal of this repo is to provide users the ability to use Amazon Bedrock and 
 The architecture & flow of the POC is as follows:
 ![POC Architecture & Flow](images/architecture.png 'POC Architecture')
 
+The architecture & flow of the POC is as follows:
+![POC Architecture & Flow](images/architecture.png 'POC Architecture')
+
 When a user interacts with the POC, the flow is as follows:
 
 1. **Natural Language Query**: The user makes a request through the Streamlit interface, asking a natural language question about sales data in Snowflake (`app.py`)
