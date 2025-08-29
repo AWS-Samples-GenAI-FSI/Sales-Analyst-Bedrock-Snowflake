@@ -352,16 +352,21 @@ def main():
                     st.error("❌ Failed to reload metadata")
         
         # Available data section moved to sidebar
-        st.header("Available Data")
+        st.header("📋 Available Data")
         st.markdown("""
-        - Customer information (CUSTOMERS)
-        - Order information (ORDERS)
-        - Order details (ORDER_DETAILS)
-        - Product information (PRODUCTS)
-        - Categories (CATEGORIES)
-        - Supplier information (SUPPLIERS)
-        - Employee data (EMPLOYEES)
-        - Shipping companies (SHIPPERS)
+        **🏢 Business Data:**
+        - 👥 **Customers** - Company details, contacts, locations
+        - 📦 **Orders** - Order dates, shipping info, freight costs
+        - 🛍️ **Order Details** - Products, quantities, prices, discounts
+        
+        **🏭 Product Catalog:**
+        - 🎯 **Products** - Names, prices, stock levels
+        - 📂 **Categories** - Product groupings and descriptions
+        - 🚚 **Suppliers** - Vendor information and contacts
+        
+        **👨‍💼 Operations:**
+        - 👔 **Employees** - Staff details and hierarchy
+        - 🚛 **Shippers** - Delivery companies and contacts
         """)
         
         # Show available databases and schemas
@@ -382,14 +387,20 @@ def main():
         st.markdown('<p class="info-text">You can ask about customer orders, product sales, and more.</p>', unsafe_allow_html=True)
         
         # Examples
-        with st.expander("Example questions", expanded=False):
+        with st.expander("💡 Example questions", expanded=False):
             st.markdown("""
-            - What are the top 5 customers by order value?
-            - Show me the schema of the CUSTOMERS table
-            - Count the number of orders by country
-            - What's the distribution of order priorities?
-            - What's the average order value by customer?
-            - Which products are most popular?
+            **✅ Try these working questions:**
+            
+            1. **What are the top 10 customers by total order value?**
+            2. **Which products generate the most revenue?**
+            3. **What's the average order value by country?**
+            4. **Which product categories sell the most?**
+            5. **What are the top 5 most expensive products?**
+            6. **How many orders come from each country?**
+            7. **Which countries have the highest average order values?**
+            8. **Who are our most frequent customers?**
+            9. **Which suppliers provide the most products?**
+            10. **Which employees process the most orders?**
             """)
         
         # Question input
