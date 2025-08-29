@@ -186,6 +186,11 @@ To enable, update your credentials in the connector file or set environment vari
     - Verify your Snowflake credentials are correct
     - Check your account identifier format
     - Ensure your user has appropriate permissions
+    - If still connecting to old account, clear cached environment variables:
+      ```bash
+      unset SNOWFLAKE_ACCOUNT SNOWFLAKE_USER SNOWFLAKE_PASSWORD
+      ```
+      Then restart the app
 
 - **"Setup fails" or timeouts**:
     - Check your Snowflake warehouse is running
