@@ -391,10 +391,20 @@ def load_data_to_snowflake(tables_data):
     try:
         cursor = conn.cursor()
         
+        # Use warehouse first
+        warehouse = os.getenv('SNOWFLAKE_WAREHOUSE', 'COMPUTE_WH')
+        cursor.execute(f"USE WAREHOUSE {warehouse}")
+        print(f"Using warehouse: {warehouse}")
+        
         # Create database if it doesn't exist
         cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DATABASE_NAME}")
         cursor.execute(f"USE DATABASE {DATABASE_NAME}")
         print(f"Using database: {DATABASE_NAME}")
+        
+        # Create schema if it doesn't exist
+        cursor.execute(f"CREATE SCHEMA IF NOT EXISTS {NORTHWIND_SCHEMA}")
+        cursor.execute(f"USE SCHEMA {NORTHWIND_SCHEMA}")
+        print(f"Using schema: {NORTHWIND_SCHEMA}")
         
         for table_name, df in tables_data.items():
             # Skip sqlite_sequence table
