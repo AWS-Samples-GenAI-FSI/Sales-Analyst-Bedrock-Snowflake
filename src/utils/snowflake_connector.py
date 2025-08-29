@@ -22,11 +22,7 @@ def get_snowflake_connection():
     warehouse = os.getenv('SNOWFLAKE_WAREHOUSE', 'COMPUTE_WH')
     role = os.getenv('SNOWFLAKE_ROLE', 'ACCOUNTADMIN')
     
-    # Debug: Print the account being used
-    print(f"DEBUG: Connecting to Snowflake account: {account}")
-    print(f"DEBUG: Using user: {user}")
-    print(f"DEBUG: Using warehouse: {warehouse}")
-    print(f"DEBUG: Using role: {role}")
+
     
     # Connect to Snowflake
     conn = snowflake.connector.connect(
